@@ -1,0 +1,149 @@
+[
+  {
+    "meta": {
+      "model_id": "demand",
+      "model_name": "Demand Forecast",
+      "family": "GradientBoosting",
+      "trained_at": "2026-09-12T10:19:05",
+      "dataset": "demand.csv \u00b7 730 days",
+      "features": [
+        "trend",
+        "weekday",
+        "is_weekend",
+        "festival",
+        "monsoon",
+        "lag_7",
+        "rolling_7"
+      ],
+      "metrics": {
+        "r2": 0.7533921820916883,
+        "mae": 2.617046251955935,
+        "rmse": 3.2141494825540913
+      },
+      "confidence": 0.947449101914523,
+      "importances": {
+        "trend": 0.12708536757299457,
+        "weekday": 0.057157950570450526,
+        "is_weekend": 0.004505308510950758,
+        "festival": 0.26227702138906367,
+        "monsoon": 0.000490692797367292,
+        "lag_7": 0.18120787611177827,
+        "rolling_7": 0.367275783047395
+      }
+    },
+    "aux": {
+      "feature_means": "[ 0.5         3.00136986  0.28493151  0.21369863  0.33424658 59.64966786\n 59.53273222]",
+      "target_mean": 59.7082191780822
+    }
+  },
+  {
+    "meta": {
+      "model_id": "health",
+      "model_name": "Vehicle Health",
+      "family": "Ridge Regression",
+      "trained_at": "2026-09-12T10:19:05",
+      "dataset": "maintenance.csv \u00b7 120 service logs",
+      "features": [
+        "age_months",
+        "odometer_km",
+        "km_since_service",
+        "service_interval_km",
+        "avg_daily_km",
+        "type_code"
+      ],
+      "metrics": {
+        "r2": 0.8197399370776557,
+        "mae": 2.681041535327326,
+        "rmse": 3.3829959093531192
+      },
+      "confidence": 0.9553853782736766
+    },
+    "aux": {
+      "feature_means": "[7.01833333e+01 2.94367075e+05 2.54386917e+04 1.25166667e+04\n 1.38175833e+02 1.55000000e+00]",
+      "target_mean": 77.15333333333335
+    }
+  },
+  {
+    "meta": {
+      "model_id": "service",
+      "model_name": "Next Services (km)",
+      "family": "ElasticNet",
+      "trained_at": "2026-09-12T10:19:05",
+      "dataset": "maintenance.csv \u00b7 120 service logs",
+      "features": [
+        "age_months",
+        "odometer_km",
+        "km_since_service",
+        "service_interval_km",
+        "avg_daily_km",
+        "type_code"
+      ],
+      "metrics": {
+        "r2": 0.9999999999998954,
+        "mae": 0.0032939232139976107,
+        "rmse": 0.0039966359772029
+      },
+      "confidence": 0.99
+    },
+    "aux": {
+      "feature_means": "[7.01833333e+01 2.94367075e+05 2.54386917e+04 1.25166667e+04\n 1.38175833e+02 1.55000000e+00]",
+      "target_mean": -12922.025
+    }
+  },
+  {
+    "meta": {
+      "model_id": "assignment",
+      "model_name": "Vehicle Assignment Utility",
+      "family": "Linear Regression",
+      "trained_at": "2026-09-12T10:19:05",
+      "dataset": "assignments.csv \u00b7 2400 decisions",
+      "features": [
+        "cost_per_km",
+        "co2_per_km",
+        "fuel_per_km",
+        "mileage_kmpl",
+        "health_score",
+        "availability",
+        "capacity_fit",
+        "distance_km",
+        "weight_kg"
+      ],
+      "metrics": {
+        "r2": 0.9070387512611209,
+        "mae": 0.038628747196559995,
+        "rmse": 0.047682387896601494
+      },
+      "confidence": 0.9353997635151525
+    },
+    "aux": {
+      "feature_means": "[1.23710042e+01 3.25509466e-01 1.21458756e-01 9.72673750e+00\n 7.21646667e-01 7.93750000e-01 9.41666667e-01 3.81229695e+02\n 2.45715357e+03]",
+      "target_mean": 0.757703305834318
+    }
+  },
+  {
+    "meta": {
+      "model_id": "fuel",
+      "model_name": "Fuel Consumption",
+      "family": "Ridge Regression",
+      "trained_at": "2026-09-12T10:19:05",
+      "dataset": "fuel.csv \u00b7 3000 waybills",
+      "features": [
+        "distance_km",
+        "weight_kg",
+        "load_ratio",
+        "type_code",
+        "mileage_kmpl"
+      ],
+      "metrics": {
+        "r2": 0.8702144779887556,
+        "mae": 10.423496648799546,
+        "rmse": 13.287489516227849
+      },
+      "confidence": 0.7560318061758763
+    },
+    "aux": {
+      "feature_means": "[4.00744300e+02 2.63719233e+03 6.03083333e-01 1.48333333e+00\n 9.70390000e+00]",
+      "target_mean": 56.23125333333333
+    }
+  }
+]
