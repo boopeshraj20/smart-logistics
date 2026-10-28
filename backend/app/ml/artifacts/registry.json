@@ -4,7 +4,7 @@
       "model_id": "demand",
       "model_name": "Demand Forecast",
       "family": "GradientBoosting",
-      "trained_at": "2026-09-12T10:19:05",
+      "trained_at": "2026-10-28T21:08:43",
       "dataset": "demand.csv \u00b7 730 days",
       "features": [
         "trend",
@@ -16,24 +16,24 @@
         "rolling_7"
       ],
       "metrics": {
-        "r2": 0.7533921820916883,
-        "mae": 2.617046251955935,
-        "rmse": 3.2141494825540913
+        "r2": 0.5907891392545377,
+        "mae": 7.492888146007218,
+        "rmse": 14.496157777404227
       },
-      "confidence": 0.947449101914523,
+      "confidence": 0.9495660735303831,
       "importances": {
-        "trend": 0.12708536757299457,
-        "weekday": 0.057157950570450526,
-        "is_weekend": 0.004505308510950758,
-        "festival": 0.26227702138906367,
-        "monsoon": 0.000490692797367292,
-        "lag_7": 0.18120787611177827,
-        "rolling_7": 0.367275783047395
+        "trend": 0.1613992869487926,
+        "weekday": 0.03925152509320322,
+        "is_weekend": 0.0031995632694514567,
+        "festival": 0.18375842299482076,
+        "monsoon": 0.0,
+        "lag_7": 0.19582221241690964,
+        "rolling_7": 0.41656898927682223
       }
     },
     "aux": {
-      "feature_means": "[ 0.5         3.00136986  0.28493151  0.21369863  0.33424658 59.64966786\n 59.53273222]",
-      "target_mean": 59.7082191780822
+      "feature_means": "[ 0.5         2.99315068  0.28493151  0.21369863  0.33424658 59.37036104\n 59.72339335]",
+      "target_mean": 60.09479452054794
     }
   },
   {
@@ -41,7 +41,7 @@
       "model_id": "health",
       "model_name": "Vehicle Health",
       "family": "Ridge Regression",
-      "trained_at": "2026-09-12T10:19:05",
+      "trained_at": "2026-10-28T21:08:43",
       "dataset": "maintenance.csv \u00b7 120 service logs",
       "features": [
         "age_months",
@@ -68,7 +68,7 @@
       "model_id": "service",
       "model_name": "Next Services (km)",
       "family": "ElasticNet",
-      "trained_at": "2026-09-12T10:19:05",
+      "trained_at": "2026-10-28T21:08:43",
       "dataset": "maintenance.csv \u00b7 120 service logs",
       "features": [
         "age_months",
@@ -95,7 +95,7 @@
       "model_id": "assignment",
       "model_name": "Vehicle Assignment Utility",
       "family": "Linear Regression",
-      "trained_at": "2026-09-12T10:19:05",
+      "trained_at": "2026-10-28T21:08:44",
       "dataset": "assignments.csv \u00b7 2400 decisions",
       "features": [
         "cost_per_km",
@@ -125,7 +125,7 @@
       "model_id": "fuel",
       "model_name": "Fuel Consumption",
       "family": "Ridge Regression",
-      "trained_at": "2026-09-12T10:19:05",
+      "trained_at": "2026-10-28T21:08:44",
       "dataset": "fuel.csv \u00b7 3000 waybills",
       "features": [
         "distance_km",

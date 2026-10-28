@@ -4,6 +4,9 @@
  */
 
 export const config = {
+  /** CARTO Basemap API key (optional; if not set, OpenStreetMap dark-mode tiles are used). */
+  cartoApiKey: import.meta.env.VITE_CARTO_API_KEY as string | undefined,
+
   /** OpenRouteService API key (real road routing). */
   orsApiKey: import.meta.env.VITE_ORS_API_KEY as string | undefined,
 

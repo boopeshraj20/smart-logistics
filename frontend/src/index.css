@@ -182,6 +182,9 @@ body {
   font-family: var(--sans);
   color: var(--ink);
 }
+.leaflet-tile-dark {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
 .leaflet-container a.leaflet-popup-close-button {
   color: var(--ink-faint);
   font-size: 20px;

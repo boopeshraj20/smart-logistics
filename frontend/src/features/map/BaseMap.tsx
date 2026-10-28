@@ -1,9 +1,17 @@
 import { useEffect, type ReactNode } from 'react';
 import { MapContainer, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import type { LeafletMouseEvent } from 'leaflet';
+import { config } from '@/services/config';
 
-const TILE_URL = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-const ATTRIBUTION = '&copy; OpenStreetMap contributors &amp; CARTO';
+const cartoKey = config.cartoApiKey;
+
+const TILE_URL = cartoKey
+  ? `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=${cartoKey}`
+  : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+const ATTRIBUTION = cartoKey
+  ? '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  : '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 export interface MapClick {
   lat: number;
@@ -60,7 +68,13 @@ export default function BaseMap({ children, onMapClick, fitPoints = [], classNam
         className="h-full w-full"
         scrollWheelZoom
       >
-        <TileLayer url={TILE_URL} attribution={ATTRIBUTION} subdomains="abcd" maxZoom={19} />
+        <TileLayer
+          url={TILE_URL}
+          attribution={ATTRIBUTION}
+          subdomains={cartoKey ? 'abcd' : 'abc'}
+          maxZoom={19}
+          className={!cartoKey ? 'leaflet-tile-dark' : undefined}
+        />
         {onMapClick && <MapEvents onMapClick={onMapClick} />}
         <FitBounds points={fitPoints} />
         {children}
