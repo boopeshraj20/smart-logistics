@@ -58,28 +58,36 @@ const localAdapter: DatabaseAdapter = {
 
 /* ----------------------------- Firebase adapter ---------------------------- */
 
-const SNAPSHOT_DOC = doc(firebaseDb!, 'state', 'snapshot');
+function getSnapshotDoc() {
+  if (!firebaseDb) throw new Error('Firestore is not initialized');
+  return doc(firebaseDb, 'state', 'snapshot');
+}
 
 const firebaseAdapter: DatabaseAdapter = {
   async getSnapshot() {
-    const snap = await getDoc(SNAPSHOT_DOC);
+    const snapDoc = getSnapshotDoc();
+    const snap = await getDoc(snapDoc);
     if (snap.exists()) return snap.data() as DatabaseSnapshot;
     const fresh = emptySnapshot();
-    await setDoc(SNAPSHOT_DOC, fresh);
+    await setDoc(snapDoc, fresh);
     return fresh;
   },
-  async saveSnapshot(s) { await setDoc(SNAPSHOT_DOC, s); },
+  async saveSnapshot(s) {
+    await setDoc(getSnapshotDoc(), s);
+  },
   async upsertVehicle(v) {
+    const snapDoc = getSnapshotDoc();
     const s = await firebaseAdapter.getSnapshot();
     const i = s.vehicles.findIndex((x) => x.id === v.id);
     if (i >= 0) s.vehicles[i] = v; else s.vehicles.push(v);
-    await setDoc(SNAPSHOT_DOC, s);
+    await setDoc(snapDoc, s);
   },
   async upsertShipment(shipment) {
+    const snapDoc = getSnapshotDoc();
     const s = await firebaseAdapter.getSnapshot();
     const i = s.shipments.findIndex((x) => x.id === shipment.id);
     if (i >= 0) s.shipments[i] = shipment; else s.shipments.push(shipment);
-    await setDoc(SNAPSHOT_DOC, s);
+    await setDoc(snapDoc, s);
   },
 };
 
